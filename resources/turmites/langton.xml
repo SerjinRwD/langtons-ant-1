@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<TransitionStateTable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Colors>2</Colors>
+  <States>1</States>
+  <Transitions>
+    <Transition>
+      <OnStateId>0</OnStateId>
+      <OnColorId>0</OnColorId>
+      <Turn>Left</Turn>
+      <NewColorId>1</NewColorId>
+      <NewStateId>0</NewStateId>
+    </Transition>
+    <Transition>
+      <OnStateId>0</OnStateId>
+      <OnColorId>1</OnColorId>
+      <Turn>Right</Turn>
+      <NewColorId>0</NewColorId>
+      <NewStateId>0</NewStateId>
+    </Transition>
+  </Transitions>
+</TransitionStateTable>
