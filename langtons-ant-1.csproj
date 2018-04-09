@@ -3,7 +3,8 @@
     <ProjectReference Include="..\SDL2-CS\SDL2-CS.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-      <None Include="resources/turmites/langton.xml" />
+      <None Include="resources/turmites/langton.xml" CopyToOutputDirectory="PreserveNewest" />
+      <None Include="resources/worlds/default.xml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>

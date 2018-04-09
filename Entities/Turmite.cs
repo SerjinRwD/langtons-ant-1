@@ -67,7 +67,7 @@ namespace langtons_ant_1.Entities
 
         public Transition[,] Table{ get; private set; }
 
-        public int ProcessColor(int colorId)
+        public int UpdateState(int colorId)
         {
             var t = Table[StateId, colorId];
 

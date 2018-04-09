@@ -2,11 +2,14 @@ namespace langtons_ant_1.Helpers
 {
     using SDL2;
     using System;
+    using System.Globalization;
     using System.IO;
     using System.Reflection;
+    using System.Text.RegularExpressions;
 
     public static class Resources
     {
+        private static readonly Regex HeximalColorRGBCodeMask = new Regex(@"^#[0-9A-Fa-f]{6}$");
         private static string _basePath;
 
         public static string BasePath
@@ -68,6 +71,28 @@ namespace langtons_ant_1.Helpers
             }
 
             return texture;
+        }
+
+        public static SDL.SDL_Color ParseColorCode(string rgbCode)
+        {
+            if(!HeximalColorRGBCodeMask.IsMatch(rgbCode))
+            {
+                throw new ArgumentException(
+                    @"Некорректный код RGB цвета. Ожидалась строка вида #ffffff.",
+                    nameof(rgbCode));
+            }
+
+            var rStr = rgbCode.Substring(1, 2);
+            var gStr = rgbCode.Substring(3, 2);
+            var bStr = rgbCode.Substring(5, 2);
+
+            var c = new SDL.SDL_Color();
+
+            c.r = byte.Parse(rStr, NumberStyles.AllowHexSpecifier);
+            c.g = byte.Parse(gStr, NumberStyles.AllowHexSpecifier);
+            c.b = byte.Parse(bStr, NumberStyles.AllowHexSpecifier);
+
+            return c;
         }
     }
 }
