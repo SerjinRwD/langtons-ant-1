@@ -16,7 +16,7 @@ namespace langtons_ant_1.Entities
     public class ColorMetadata
     {
         public int Id { get; set; }
-        public string RGBCode { get; set; }
+        public string RGBACode { get; set; }
     }
 
     public class WorldMetadata

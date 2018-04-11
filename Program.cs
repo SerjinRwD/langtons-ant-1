@@ -1,5 +1,6 @@
 ﻿using langtons_ant_1.Entities;
 using langtons_ant_1.Helpers;
+using langtons_ant_1.Renders;
 using SDL2;
 using System;
 using System.IO;
@@ -10,25 +11,29 @@ namespace langtons_ant_1
     {
         private static IntPtr Renderer;
         private static IntPtr Window;
-        
+        private static World World;
+        private static WorldRenderer WorldRenderer;
+
         static void Main(string[] args)
         {
-            MakeDefaultWorld();
-            /*
             try
             {
                 Init();
+
+                var worldPath = Resources.GetFilePath("worlds/default.xml");
+                World = new World(WorldMetadata.Load(worldPath));
+                WorldRenderer = new WorldRenderer(Renderer, World);
+
                 Run();
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"{ex.Message}. ${ex.StackTrace}");
+                Console.WriteLine($"Exception were thrown. Message: {ex.Message}. Stack Trace: {ex.StackTrace}");
             }
             finally
             {
                 Quit();
             }
-             */
         }
 
         private static void Init()
@@ -82,8 +87,13 @@ namespace langtons_ant_1
                     }
                 }
 
+                World.Update();
+
                 // rendering
+                SDL.SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
                 SDL.SDL_RenderClear(Renderer);
+
+                WorldRenderer.Render();
 
                 SDL.SDL_RenderPresent(Renderer);
             }
@@ -146,16 +156,16 @@ namespace langtons_ant_1
 
                 Colors = new ColorMetadata[]
                 {
-                    new ColorMetadata { Id = 0, RGBCode = "#000000" },
-                    new ColorMetadata { Id = 1, RGBCode = "#ffffff" },
-                    new ColorMetadata { Id = 2, RGBCode = "#ff0000" },
-                    new ColorMetadata { Id = 3, RGBCode = "#00ff00" },
-                    new ColorMetadata { Id = 4, RGBCode = "#0000ff" },
-                    new ColorMetadata { Id = 5, RGBCode = "#ffff00" },
-                    new ColorMetadata { Id = 6, RGBCode = "#00ffff" },
-                    new ColorMetadata { Id = 7, RGBCode = "#ff00ff" },
-                    new ColorMetadata { Id = 8, RGBCode = "#fff000" },
-                    new ColorMetadata { Id = 9, RGBCode = "#000fff" }
+                    new ColorMetadata { Id = 0, RGBACode = "#000000ff" },
+                    new ColorMetadata { Id = 1, RGBACode = "#ffffffff" },
+                    new ColorMetadata { Id = 2, RGBACode = "#ff0000ff" },
+                    new ColorMetadata { Id = 3, RGBACode = "#00ff00ff" },
+                    new ColorMetadata { Id = 4, RGBACode = "#0000ffff" },
+                    new ColorMetadata { Id = 5, RGBACode = "#ffff00ff" },
+                    new ColorMetadata { Id = 6, RGBACode = "#00ffffff" },
+                    new ColorMetadata { Id = 7, RGBACode = "#ff00ffff" },
+                    new ColorMetadata { Id = 8, RGBACode = "#fff000ff" },
+                    new ColorMetadata { Id = 9, RGBACode = "#000fffff" }
                 },
 
                 Turmites = new TurmiteMetadata[]

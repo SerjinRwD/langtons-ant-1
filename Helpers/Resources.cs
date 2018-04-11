@@ -9,7 +9,7 @@ namespace langtons_ant_1.Helpers
 
     public static class Resources
     {
-        private static readonly Regex HeximalColorRGBCodeMask = new Regex(@"^#[0-9A-Fa-f]{6}$");
+        private static readonly Regex HeximalColorRGBACodeMask = new Regex(@"^#[0-9A-Fa-f]{6,8}$");
         private static string _basePath;
 
         public static string BasePath
@@ -73,24 +73,26 @@ namespace langtons_ant_1.Helpers
             return texture;
         }
 
-        public static SDL.SDL_Color ParseColorCode(string rgbCode)
+        public static SDL.SDL_Color ParseColorCode(string rgbaCode)
         {
-            if(!HeximalColorRGBCodeMask.IsMatch(rgbCode))
+            if(!HeximalColorRGBACodeMask.IsMatch(rgbaCode))
             {
                 throw new ArgumentException(
-                    @"Некорректный код RGB цвета. Ожидалась строка вида #ffffff.",
-                    nameof(rgbCode));
+                    @"Некорректный код RGB цвета. Ожидалась строка вида #ffffffff.",
+                    nameof(rgbaCode));
             }
 
-            var rStr = rgbCode.Substring(1, 2);
-            var gStr = rgbCode.Substring(3, 2);
-            var bStr = rgbCode.Substring(5, 2);
+            var rStr = rgbaCode.Substring(1, 2);
+            var gStr = rgbaCode.Substring(3, 2);
+            var bStr = rgbaCode.Substring(5, 2);
+            var aStr = rgbaCode.Substring(7, 2);
 
             var c = new SDL.SDL_Color();
 
             c.r = byte.Parse(rStr, NumberStyles.AllowHexSpecifier);
             c.g = byte.Parse(gStr, NumberStyles.AllowHexSpecifier);
             c.b = byte.Parse(bStr, NumberStyles.AllowHexSpecifier);
+            c.a = byte.Parse(aStr, NumberStyles.AllowHexSpecifier);
 
             return c;
         }

@@ -14,43 +14,43 @@
   <Colors>
     <ColorMetadata>
       <Id>0</Id>
-      <RGBCode>#000000</RGBCode>
+      <RGBACode>#000000ff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>1</Id>
-      <RGBCode>#ffffff</RGBCode>
+      <RGBACode>#ffffffff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>2</Id>
-      <RGBCode>#ff0000</RGBCode>
+      <RGBACode>#ff0000ff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>3</Id>
-      <RGBCode>#00ff00</RGBCode>
+      <RGBACode>#00ff00ff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>4</Id>
-      <RGBCode>#0000ff</RGBCode>
+      <RGBACode>#0000ffff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>5</Id>
-      <RGBCode>#ffff00</RGBCode>
+      <RGBACode>#ffff00ff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>6</Id>
-      <RGBCode>#00ffff</RGBCode>
+      <RGBACode>#00ffffff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>7</Id>
-      <RGBCode>#ff00ff</RGBCode>
+      <RGBACode>#ff00ffff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>8</Id>
-      <RGBCode>#fff000</RGBCode>
+      <RGBACode>#fff000ff</RGBACode>
     </ColorMetadata>
     <ColorMetadata>
       <Id>9</Id>
-      <RGBCode>#000fff</RGBCode>
+      <RGBACode>#000fffff</RGBACode>
     </ColorMetadata>
   </Colors>
 </WorldMetadata>

@@ -11,7 +11,7 @@ namespace langtons_ant_1.Entities
         public int X { get; set; }
         public int Y { get; set; }
         public int NewColorId { get; set; }
-        
+
         public WorldCellChangedEventArgs(int currentX, int currentY, int currentColorId)
         {
             X = currentX;
@@ -51,20 +51,22 @@ namespace langtons_ant_1.Entities
 
             foreach(var cm in world.Colors)
             {
-                Colors[cm.Id] = Resources.ParseColorCode(cm.RGBCode);
+                Colors[cm.Id] = Resources.ParseColorCode(cm.RGBACode);
             }
 
             Turmites = new List<Turmite>();
 
             foreach(var tm in world.Turmites)
             {
-                var tst = TransitionStateTable.Load(Resources.GetFilePath($@"resources/turmites/{tm.Name}.xml"));
+                var tst = TransitionStateTable.Load(Resources.GetFilePath($@"turmites/{tm.Name}.xml"));
                 var t = new Turmite(tst);
 
                 t.Direction = tm.Direction;
                 t.StateId = tm.StateId;
                 t.X = tm.X;
                 t.Y = tm.Y;
+
+                Turmites.Add(t);
             }
         }
 
