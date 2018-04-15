@@ -5,7 +5,7 @@ namespace langtons_ant_1
     public class SdlException : Exception
     {
         public SdlException()
-            : base()
+            : base($"{SDL.SDL_GetError()}")
         { }
 
         public SdlException(string method)

@@ -10,6 +10,34 @@
       <StateId>0</StateId>
       <Name>langton</Name>
     </TurmiteMetadata>
+    <TurmiteMetadata>
+      <X>160</X>
+      <Y>120</Y>
+      <Direction>0</Direction>
+      <StateId>0</StateId>
+      <Name>langton</Name>
+    </TurmiteMetadata>
+    <TurmiteMetadata>
+      <X>480</X>
+      <Y>120</Y>
+      <Direction>3</Direction>
+      <StateId>0</StateId>
+      <Name>langton</Name>
+    </TurmiteMetadata>
+    <TurmiteMetadata>
+      <X>160</X>
+      <Y>360</Y>
+      <Direction>3</Direction>
+      <StateId>0</StateId>
+      <Name>t1</Name>
+    </TurmiteMetadata>
+    <TurmiteMetadata>
+      <X>480</X>
+      <Y>360</Y>
+      <Direction>0</Direction>
+      <StateId>0</StateId>
+      <Name>t1</Name>
+    </TurmiteMetadata>
   </Turmites>
   <Colors>
     <ColorMetadata>

@@ -93,7 +93,7 @@ namespace langtons_ant_1.Entities
                 }
                 else if(t.X > W - 1)
                 {
-                    t.X = W - 1;
+                    t.X = 0;
                 }
 
                 if(t.Y < 0)
@@ -102,7 +102,7 @@ namespace langtons_ant_1.Entities
                 }
                 else if(t.Y > H - 1)
                 {
-                    t.Y = H - 1;
+                    t.Y = 0;
                 }
             }
         }

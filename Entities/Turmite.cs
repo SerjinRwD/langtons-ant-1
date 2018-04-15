@@ -1,6 +1,7 @@
 namespace langtons_ant_1.Entities
 {
-    using System.IO;    
+    using System.Collections.Generic;
+    using System.IO;
     using System.Xml;
     using System.Xml.Serialization;
 
@@ -50,26 +51,48 @@ namespace langtons_ant_1.Entities
         }
     }
 
+    public struct TurmiteStateKey
+    {
+        public int StateId { get; set; }
+        public int ColorId { get; set; }
+
+        public void Set(int state, int color)
+        {
+            StateId = state;
+            ColorId = color;
+        }
+
+        public TurmiteStateKey(int state, int color)
+        {
+            StateId = state;
+            ColorId = color;
+        }
+    }
+
     public class Turmite
     {
         public const int RIGHT = 0;
         public const int TOP = 1;
         public const int LEFT = 2;
         public const int BOTTOM = 3;
-
-        [XmlIgnore]
         public int X { get; set; }
-
-        [XmlIgnore]
         public int Y { get; set; }
         public int StateId { get; set; }
         public int Direction { get; set; }
+        public Dictionary<TurmiteStateKey, Transition> Table{ get; private set; }
 
-        public Transition[,] Table{ get; private set; }
+        private TurmiteStateKey _occuringState = new TurmiteStateKey();
 
         public int UpdateState(int colorId)
         {
-            var t = Table[StateId, colorId];
+            _occuringState.Set(StateId, colorId);
+            
+            if(!Table.ContainsKey(_occuringState))
+            {
+                return 0;
+            }
+
+            var t = Table[_occuringState];
 
             // Новое направление
             switch(t.Turn)
@@ -112,11 +135,11 @@ namespace langtons_ant_1.Entities
 
         public Turmite(TransitionStateTable table)
         {
-            Table = new Transition[table.States, table.Colors];
+            Table = new Dictionary<TurmiteStateKey, Transition>();
 
             foreach(var t in table.Transitions)
             {
-                Table[t.OnStateId, t.OnColorId] = t;
+                Table.Add(new TurmiteStateKey(t.OnStateId, t.OnColorId), t);
             }
         }
     }
